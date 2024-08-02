@@ -7,6 +7,7 @@ int main(int ac, char **av)
 
     if (ac < 1)
         return 1;
+    printf("%s\n", av[1]);
     fd = open(av[1], O_RDONLY);
     line = get_next_line(fd);
     while (line)

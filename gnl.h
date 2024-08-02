@@ -8,7 +8,7 @@
 #include <stdbool.h>
 
 #ifndef BS
-#define BS 42
+# define BS 42
 #endif
 
 char *get_next_line(int fd);

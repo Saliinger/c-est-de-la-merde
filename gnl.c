@@ -108,7 +108,7 @@ char *clean(char *s)
 char *get_next_line(int fd)
 {
     char *line;
-    char buffer[BS];
+    char buffer[BS + 1];
     static char *stash;
     int bytes = 0;
 
