@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnl.h"
+#include "get_next_line.h"
 
 int ft_strlen(char *str)
 {
@@ -48,7 +48,7 @@ char *ft_strjoin(char *s1, char *s2)
     }
     while (s2[j])
     {
-        dest[i] = s1[j];
+        dest[i] = s2[j];
         i++;
         j++;
     }
@@ -90,8 +90,7 @@ char *clean(char *s)
 
     while (s[i] && s[i] != '\n')
         i++;
-    if (s[i] == '\n')
-        i++;
+    i++;
     clean = (char *)malloc((ft_strlen(s) - i + 1) * sizeof(char ));
     if (!clean)
         return free(s), NULL;
@@ -125,6 +124,7 @@ char *get_next_line(int fd)
     if (bytes < BS && ft_strlen(stash) == 0)
         return free(stash), NULL;
     buffer[bytes] = '\0';
+    stash = ft_strjoin(stash, buffer);
     while (is_line(stash) == false)
     {
         bytes = read(fd, buffer, BS);
@@ -137,6 +137,5 @@ char *get_next_line(int fd)
     }
     line = extract(stash);
     stash = clean(stash);
-    printf(("%s"),stash);
     return line;
 }

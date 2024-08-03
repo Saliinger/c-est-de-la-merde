@@ -1,4 +1,4 @@
-NAME = gnl
+NAME = get_next_line.a
 CFLAGS = -Wall -Wextra -Werror -I./include/
 DEBUG = -g3 -fsanitize=address
 CC = cc
