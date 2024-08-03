@@ -4,7 +4,7 @@ DEBUG = -g3 -fsanitize=address
 CC = cc
 
 SRC =	./main.c\
-		./gnl.c
+		./get_next_line.c
 
 OBJ =		$(SRC:.c=.o)
 

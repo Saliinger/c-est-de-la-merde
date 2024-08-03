@@ -24,10 +24,6 @@ void print_num(long long int num, int base, int *count)
 {
 	char *hexa = "0123456789abcdef";
 
-
-    printf("%lld\n%d\n", num, base);
-    if (num == -2147483648)
-        ft_putstr("-2147483648", count);
 	if (num < 0)
 	{
 		num *= -1;
