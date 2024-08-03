@@ -24,6 +24,7 @@ void print_num(long long int num, int base, int *count)
 {
 	char *hexa = "0123456789abcdef";
 
+
 	if (num < 0)
 	{
 		num *= -1;
@@ -37,14 +38,18 @@ void print_num(long long int num, int base, int *count)
 	return ;
 }
 
-void flag(int *count, char c, va_list ap)
+void flag(int *count, char c, va_list *ap)
 {
     if (c == 's')
-        ft_putstr(va_arg(ap, char *), count);
+        ft_putstr(va_arg(*ap, char *), count);
     else if (c == 'd')
-        print_num(va_arg(ap, int), 10, count);
+    {
+      int arg = va_arg(*ap, int);
+      printf("arg: %d\n", arg);
+      print_num(arg, 10, count);
+    }
     else if (c == 'x')
-        print_num(va_arg(ap, unsigned int ), 16, count);
+        print_num(va_arg(*ap, unsigned int ), 16, count);
 }
 
 
@@ -59,7 +64,7 @@ int ft_printf(const char *format, ... )
     {
         if (format[i] == '%' && (format[i + 1] == 's' || format[i + 1] == 'd' || format[i + 1] == 'x'))
         {
-            flag(&count, format[i + 1], ap);
+            flag(&count, format[i + 1], &ap);
             i++;
         }
         else
